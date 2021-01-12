@@ -1,0 +1,22 @@
+{
+  "name": "time-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaksimenkoYR/time-traker.git"
+  },
+  "author": "maksimenko yaroslav <maksimenko.yr@gmai.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaksimenkoYR/time-traker/issues"
+  },
+  "homepage": "https://github.com/MaksimenkoYR/time-traker#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
