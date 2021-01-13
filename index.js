@@ -7,9 +7,15 @@ const MongoURI =
 
 const app = express()
 
+app.use('api/auth', require('./routes/auth.router'))
 async function start() {
     try {
-        await mongoose.connect(MongoURI, {useNewUrlParser: true, useUnifiedTopology: true})
+        await mongoose.connect(MongoURI, {
+            useNewUrlParser: true,
+            useFindAndModify: true,
+            useCreateIndex: true,
+            useUnifiedTopology: true,
+        })
         app.listen(PORT, () => {
             console.log(`server starterd at port: ${PORT}`)
         })
