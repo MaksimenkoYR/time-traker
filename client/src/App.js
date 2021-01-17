@@ -3,12 +3,7 @@ import useRoutes from './features/UseRoutes'
 
 function App() {
     const routes = useRoutes(false)
-    return (
-        <div className='container'>
-            <h1>head</h1>
-            {routes}
-        </div>
-    )
+    return <div className='container'>{routes}</div>
 }
 
 export default App

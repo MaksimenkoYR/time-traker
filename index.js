@@ -7,7 +7,7 @@ const MongoURI =
 
 const app = express()
 
-app.use('api/auth', require('./routes/auth.router'))
+app.use('/api/auth', require('./routes/auth.router'))
 async function start() {
     try {
         await mongoose.connect(MongoURI, {

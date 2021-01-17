@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 
 const router = Router()
 router.post(
-    '/register',
+    '/registration',
     [
         check('email', 'incorrect email').isEmail(),
         check('password', 'min length 6 symbols').isLength({min: 6}),

@@ -1,11 +1,18 @@
 import React from 'react'
-import {Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
+import AuthPage from '../pages/AuthPage'
 
 const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
         return <Switch></Switch>
     } else {
-        return <Switch></Switch>
+        return (
+            <Switch>
+                <Route path='/'>
+                    <AuthPage />
+                </Route>
+            </Switch>
+        )
     }
 }
 
