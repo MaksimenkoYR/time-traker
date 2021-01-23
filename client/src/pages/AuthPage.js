@@ -1,15 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {useForm} from 'react-hook-form'
+import {AuthContext} from '../context/AuthContex'
 import useHttp from '../hooks/http.hook'
+import MainPageTemplate from './templates/MainPageTemplate'
 
 const AuthPage = () => {
+    const auth = useContext(AuthContext)
     const {request} = useHttp()
     const {register, handleSubmit} = useForm()
-
     const logIn = async data => {
         try {
             const response = await request('/api/auth/login', 'POST', data)
             console.log(response)
+            auth.logIn(response.token, response.userId)
         } catch (error) {}
     }
     const registration = async data => {
