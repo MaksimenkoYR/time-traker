@@ -6,7 +6,7 @@ const MongoURI =
     'mongodb+srv://MaksimenkoYr:1337@time-tracker.xkvyz.mongodb.net/time-tracker?retryWrites=true&w=majority'
 
 const app = express()
-
+app.use(express.json({extendet: true}))
 app.use('/api/auth', require('./routes/auth.router'))
 async function start() {
     try {
@@ -20,7 +20,8 @@ async function start() {
             console.log(`server starterd at port: ${PORT}`)
         })
     } catch (error) {
-        console.log(e)
+        console.log('Server Error', e.message)
+        process.exit(1)
     }
 }
 
