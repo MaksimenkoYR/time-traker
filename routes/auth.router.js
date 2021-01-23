@@ -13,9 +13,13 @@ router.post(
     ],
     async (req, res) => {
         try {
+            console.log(req.body)
+
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
-                return res.status(400).json({errors, message: 'incorect registry data'})
+                return res
+                    .status(400)
+                    .json({errors: errors.array(), message: 'incorect registration data'})
             }
             const {email, password} = req.body
             const candidate = await User.findOne({email})
@@ -24,11 +28,12 @@ router.post(
             }
 
             const hashedPassword = await bcrypt.hash(password, 12)
-            const user = new User({emai, password: hashedPassword})
-
+            const user = new User({email, password: hashedPassword})
             await user.save()
+            res.status(201).json({message: 'user creted'})
         } catch (error) {
-            res.status(500).json({message: 'something wrong, try againaut'})
+            res.status(500).json({error, message: 'something wrong, try againaut'})
+            throw error
         }
     }
 )
@@ -56,7 +61,7 @@ router.post(
             }
 
             token = jwt.sign({userId: user.id}, 'jojo', {expiresIn: '1h'})
-            res.json({token, userId: user.id})
+            res.status(201).json({token, userId: user.id})
         } catch (error) {
             res.status(500).json({message: 'something wrong, try againaut'})
         }
