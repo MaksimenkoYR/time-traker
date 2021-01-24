@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {AuthContext} from '../context/AuthContex'
 
 const MainNavigation = () => {
+    const auth = useContext(AuthContext)
     return (
         <nav className='navbar navbar-expand-md navbar-light bg-light fixed-top'>
             <div className='container-fluid'>
@@ -21,7 +23,9 @@ const MainNavigation = () => {
 
                 <div className='collapse navbar-collapse' id='navbarsExampleDefault'>
                     <ul className='navbar-nav me-auto mb-2 mb-md-0'></ul>
-                    <button className='btn btn-outline-primary'>Log Out</button>
+                    <button onClick={() => auth.logOut()} className='btn btn-outline-primary'>
+                        Log Out
+                    </button>
                 </div>
             </div>
         </nav>

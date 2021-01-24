@@ -2,7 +2,6 @@ import React, {useContext} from 'react'
 import {useForm} from 'react-hook-form'
 import {AuthContext} from '../context/AuthContex'
 import useHttp from '../hooks/http.hook'
-import MainPageTemplate from './templates/MainPageTemplate'
 
 const AuthPage = () => {
     const auth = useContext(AuthContext)
