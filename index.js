@@ -10,8 +10,11 @@ app.use(express.json({extendet: true}))
 
 app.use(async (req, res, next) => {
     try {
-        const user = await User.findById(req.headers['user-id'])
-        req.user = user
+        const userId = req.headers['user-id']
+        if (userId) {
+            const user = await User.findById(userId)
+            req.user = user
+        }
     } catch (e) {
         console.log(e)
     }

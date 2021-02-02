@@ -14,7 +14,7 @@ const user = new Schema({
     ],
 })
 
-user.methods.addActivityTypes = function ([newActivityTypes]) {
+user.methods.addActivityTypes = function (newActivityTypes) {
     this.activityTypes = [...this.activityTypes, {name: newActivityTypes}]
     return this.save()
 }

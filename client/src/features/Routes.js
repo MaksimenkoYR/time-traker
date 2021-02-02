@@ -7,7 +7,7 @@ const Routes = isAuthenticated => {
     if (isAuthenticated) {
         return (
             <Switch>
-                <Route path='/' exact={true}>
+                <Route path='/' exact>
                     <HomePage />
                 </Route>
             </Switch>
@@ -15,7 +15,7 @@ const Routes = isAuthenticated => {
     } else {
         return (
             <Switch>
-                <Route path='/' exact>
+                <Route path='/'>
                     <AuthPage />
                 </Route>
                 <Redirect to='/' />
