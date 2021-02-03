@@ -1,7 +1,5 @@
 import {AuthContext} from './context/AuthContex'
 import {useAuth} from './hooks/useAuth'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import bootstrap from 'bootstrap'
 import Routes from './features/Routes'
 
 function App() {
