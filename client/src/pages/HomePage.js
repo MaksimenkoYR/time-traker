@@ -1,8 +1,12 @@
 import React from 'react'
 import MainTemplate from './templates/MainPageTemplate'
-
+import StartActivity from './../features/Activity/StartActivity'
 const HomePage = () => {
-    return <MainTemplate></MainTemplate>
+    return (
+        <MainTemplate>
+            <StartActivity />
+        </MainTemplate>
+    )
 }
 
 export default HomePage
