@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import {Button, Form, FormControl, Navbar, Row} from 'react-bootstrap'
+import {Button, Nav, Navbar} from 'react-bootstrap'
 import {AuthContext} from '../context/AuthContex'
 
 const MainNavigation = () => {
@@ -8,9 +8,21 @@ const MainNavigation = () => {
         <Navbar bg='light' expand='lg' className='justify-content-between'>
             <Navbar.Brand href='/'>Time Tracker</Navbar.Brand>
 
-            <Button onClick={() => auth.logOut()} variant='outline-primary'>
-                Log Out
-            </Button>
+            <Navbar.Toggle></Navbar.Toggle>
+            <Navbar.Collapse>
+                <Nav>
+                    <Nav.Item>
+                        <Nav.Link className='text-primary' href='/manage/activity_types'>
+                            Activity types
+                        </Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Button block onClick={() => auth.logOut()} variant='outline-primary'>
+                            Log Out
+                        </Button>
+                    </Nav.Item>
+                </Nav>
+            </Navbar.Collapse>
         </Navbar>
     )
 }
