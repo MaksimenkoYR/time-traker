@@ -10,10 +10,8 @@ const AddActivity = ({userId, ...props}) => {
     const addActivityTypes = async data => {
         try {
             const response = await request('/activity/types', 'POST', data, {'user-id': userId})
-            console.log(response)
             if (!error) {
                 setShowActivityAdded(true)
-                props.handleClose()
             }
         } catch (e) {
             console.log(e)
@@ -31,8 +29,11 @@ const AddActivity = ({userId, ...props}) => {
                 <Form.Group controlId='formBasicEmail'>
                     <Form.Label>add new activity </Form.Label>
                     <Form.Control
-                        ref={register}
-                        name='newActivityType'
+                        ref={register({
+                            required: true,
+                            minLength: 1,
+                        })}
+                        name='name'
                         placeholder='activity name '
                     />
                 </Form.Group>
