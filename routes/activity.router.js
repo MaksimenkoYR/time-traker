@@ -5,7 +5,6 @@ router = Router()
 router.get('/', async (req, res) => {
     try {
         const startedActivity = req.user.activity.filter(item => item.end == null)
-        console.log(startedActivity)
         res.status(200).send({
             activityTypes: req.user.activityTypes,
             startedActivity,

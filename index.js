@@ -22,7 +22,7 @@ app.use(async (req, res, next) => {
 })
 app.use('/activity', require('./routes/activity.router'))
 app.use('/api/auth', require('./routes/auth.router'))
-
+app.use('/manage', require('./routes/manage.router'))
 async function start() {
     try {
         await mongoose.connect(MongoURI, {
