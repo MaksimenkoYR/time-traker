@@ -10,14 +10,12 @@ const AuthPage = () => {
     const logIn = async data => {
         try {
             const response = await request('/api/auth/login', 'POST', data)
-            console.log(response)
             auth.logIn(response.token, response.userId)
         } catch (error) {}
     }
     const registration = async data => {
         try {
             const response = await request('/api/auth/registration', 'POST', data)
-            console.log(response)
         } catch (error) {}
     }
     return (

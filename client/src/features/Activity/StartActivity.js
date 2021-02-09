@@ -28,7 +28,6 @@ const StartActivity = () => {
         const response = await request('/activity', 'GET', null, {'user-id': userId})
         setActivityTypes(response.activityTypes)
         setStartedActivity(response.startedActivity)
-        console.log(response)
     }
     useEffect(() => {
         getActivity()

@@ -40,10 +40,12 @@ user.methods.addActivity = function (newActivity) {
     return this.save()
 }
 user.methods.updateActivity = function (activity) {
+    console.log(activity)
     this.activity = this.activity.map(item => {
-        if (item._id === activity.id) {
+        if (item._id == activity.id) {
+            console.log('in method', activity, item)
             return {
-                ...item,
+                id: item._id,
                 name: activity.name || item.name,
                 start: activity.start || item.start,
                 end: activity.end || item.end,
@@ -52,6 +54,7 @@ user.methods.updateActivity = function (activity) {
             return item
         }
     })
+    console.log(this)
     return this.save()
 }
 module.exports = model('User', user)

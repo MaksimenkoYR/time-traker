@@ -16,8 +16,7 @@ router.get('/', async (req, res) => {
 
 router.post('/types', async (req, res) => {
     try {
-        const newActivityTypes = req.body.activityName
-        req.user.addActivityTypes(newActivityTypes)
+        req.user.addActivityTypes(req.body.name)
         res.status(201).send({message: 'activity type created'})
     } catch (e) {
         console.log(e)
@@ -36,6 +35,7 @@ router.post('/start', async (req, res) => {
 
 router.post('/:id/end', async (req, res) => {
     try {
+        console.log(req.body)
         req.user.updateActivity(req.body)
         res.status(201).send({message: 'acntivity end'})
     } catch (error) {
