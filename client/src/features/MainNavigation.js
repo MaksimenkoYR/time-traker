@@ -15,6 +15,9 @@ const MainNavigation = () => {
                         <Nav.Link className='text-primary' href='/manage/activity_types'>
                             Activity types
                         </Nav.Link>
+                        <Nav.Link className='text-primary' href='/manage/activity'>
+                            Manage activity
+                        </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Button block onClick={() => auth.logOut()} variant='outline-primary'>
