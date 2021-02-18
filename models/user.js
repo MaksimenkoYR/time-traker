@@ -4,13 +4,8 @@ const user = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     activityTypes: [{name: {type: String}}],
-    activity: [
-        {
-            name: {type: String, required: true},
-            start: {type: Date, required: true},
-            end: {type: Date},
-        },
-    ],
+    activityHistory: {type: Schema.Types.ObjectId, ref: 'ActivityHistory'},
+    ongoingActivity: {type: Schema.Types.ObjectId, ref: 'OngoingHistory'},
 })
 
 user.methods.addActivityTypes = function (newActivityTypes) {
@@ -35,26 +30,4 @@ user.methods.deleteActivityType = function (id) {
     this.save()
 }
 
-user.methods.addActivity = function (newActivity) {
-    this.activity = [...this.activity, {name: newActivity.name, start: newActivity.start}]
-    return this.save()
-}
-user.methods.updateActivity = function (activity) {
-    console.log(activity)
-    this.activity = this.activity.map(item => {
-        if (item._id == activity.id) {
-            console.log('in method', activity, item)
-            return {
-                id: item._id,
-                name: activity.name || item.name,
-                start: activity.start || item.start,
-                end: activity.end || item.end,
-            }
-        } else {
-            return item
-        }
-    })
-    console.log(this)
-    return this.save()
-}
 module.exports = model('User', user)
